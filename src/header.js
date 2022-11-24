@@ -71,7 +71,7 @@ class Header extends Component{
 
     return(
     <> 
-    <Navbar style={{backgroundColor: "#090707"}} expand="lg"  variant="dark">
+    <Navbar id= 'root' style={{backgroundColor: "#090707"}} expand="lg"  variant="dark">
       <Navbar.Brand href="/">
         <img
         alt=""

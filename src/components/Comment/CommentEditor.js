@@ -43,7 +43,7 @@ class CommentEditor extends Component {
         }
       })
       .then(response => {
-        if(response.status == 201){
+        if(response.status === 201){
           cogoToast.success("댓글 작성 완료");
           //새로고침.
         }

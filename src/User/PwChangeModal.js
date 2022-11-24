@@ -73,7 +73,7 @@ class PwChangeModalForm extends Component {
       })
       //정상 수행
       .then(response => {
-        if (response.status==200) {
+        if (response.status===200) {
           cogoToast.success(response.data.message);
           this.setState({
             show: false

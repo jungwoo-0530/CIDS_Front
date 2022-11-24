@@ -1,11 +1,11 @@
 import React, { Component, useEffect, useState } from "react";
 import { Image, Table, Row, Col } from "react-bootstrap";
-import { Input } from 'semantic-ui-react';
+// import { Input } from 'semantic-ui-react';
 import axios from "axios";
 import Moment from 'moment';
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from 'react-paginate';
 import { } from '../css/pagination.css';
-import { setIn } from "immutable";
+// import { setIn } from "immutable";
 
 
 axios.defaults.withCredentials = true;

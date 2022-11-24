@@ -1,24 +1,24 @@
-import React from 'react';
-// import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
+// import React from 'react';
+// // import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 
-import BbsView from './components/BbsView'
-// import Header from './header';
+// import BbsView from './components/BbsView'
+// // import Header from './header';
 
-function App() {
+// function App() {
 
 
-  const styles = {
-    root: {
-      width: '700px'
-    },
-  }
-  return (
-    <div>
-      <div style={styles.root}>
-        <BbsView/>
-      </div>
-    </div>
-  );
-}
+//   const styles = {
+//     root: {
+//       width: '700px'
+//     },
+//   }
+//   return (
+//     <div>
+//       <div style={styles.root}>
+//         <BbsView/>
+//       </div>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;

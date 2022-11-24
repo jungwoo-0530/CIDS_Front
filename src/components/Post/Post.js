@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { ButtonGroup, Button, Jumbotron, Image } from "react-bootstrap";
 import CommentEditor from "../Comment/CommentEditor";
-import UserProfileModal from "../../User/UserProfileModal";
+// import UserProfileModal from "../../User/UserProfileModal";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
 import $ from 'jquery';
 import { } from '../../css/userProfile.css';
 import cogoToast from 'cogo-toast';
-import PostUpdateForm from "./PostUpdateForm"
 import InvalidPage from "../../404Page"
 
 /////////////////////////////
@@ -17,7 +16,7 @@ import CommentsRow from "../Comment/CommentsRow";
 import { Comment } from 'semantic-ui-react';
 ///////////////////////////////
 
-// import "../../css/NavigaionGuardModalStyle.scss"
+import "../../css/NavigaionGuardModalStyle.scss"
 
 axios.defaults.withCredentials = true;
 
@@ -36,7 +35,8 @@ class Post extends Component {
 
     comments: [],
     currentPage: 0,
-    totalPages: 0
+    totalPages: 0,
+    numberComment: 0
   };
 
  
@@ -136,10 +136,10 @@ class Post extends Component {
       .then(response => {
 
         if (response.status === 200) {
-          console.log("성공");
-          cogoToast.success(this.props.match.params.id);
+          console.log("게시물을 불러왔습니다.");
+          cogoToast.success(this.props.match.params.id+"번 게시물입니다.");
           this.setState({ editable: response.data.data.editable })
-          console.log(this.state.editable);
+          console.log("editable",this.state.editable);
           this.Category(response.data.data.type);
           const post = (
             <div>
@@ -237,24 +237,27 @@ class Post extends Component {
         }
       })
       .then(response => {
+        this.setState({
+          numberComment: response.data.numberOfElements,
+          totalPages: response.data.totalPages
+        })
         
         console.log(response.data.totalPages);
+        console.log(response.data.numberOfElements);
+        console.log(this.state.numberComment);
         
 
-        const totalPages = response.data.totalPages;
+        // const totalPages = response.data.totalPages;
         // const itemsCountPerPage = response.data.size;
         // const totalItemsCount = response.data.totalElements;
         // const editable = response.data.content.editable;
         
-        this.setState({totalPages: response.data.totalPages});
 
         console.log(this.state.totalPages);
 
         
         if (response.data.numberOfElements > 0) {
           const returnedComments = response.data.content;
-          console.log("here");
-          console.log(returnedComments.length);
           // console.log(response.data.content)
           this.setState({
             comments: returnedComments
@@ -297,11 +300,20 @@ class Post extends Component {
           <CommentEditor boardId={this.props.match.params.id} />
 
           <div style={divStyle}>
+            {this.state.numberComment > 0 ?
+            <>
            <Comment.Group size='large'>
-            {this.state.comments.map((comment) =>(
+{this.state.comments.map((comment) =>(
               <CommentsRow commentRow = {comment} comments={this.state.comments} boardId={this.props.match.params.id}/>
             ))}
           </Comment.Group>
+          </>
+            :
+            <>
+            <h3 colSpan="5" style={{ textAlign: "center" }}>댓글이 존재하지 않습니다.</h3>
+          </>
+            }
+            
           </div>
           
           {/* <PaginationPostAndComment commentsPerPage={this.state.commentsPerPage} totalComments={this.state.comments.length} paginate={this.paginate}/> */}

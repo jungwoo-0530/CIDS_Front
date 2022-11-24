@@ -1,28 +1,32 @@
 import React, {Component} from "react";
-import JoinForm from "./User/JoinForm";
-import LoginForm from "./User/LoginForm";
-import Post from "./components/Post/Post";
-import UserPageForm from "./User/UserPageForm";
+
 import HomepageForm from "./HomePage/HomePage";
 import {Route, Switch} from "react-router-dom";
-import BoardList from "./components/Post/BoardList"
 import RankingIndex from "./Service/RankingIndex";
 import ServicePage from "./Service/ServicePage";
 import DashboardPage from './Service/DashboardPage'
 import {CssBaseline} from "@material-ui/core";
-import LoginPage from "./LoginPage";
 import InvalidPage from "./404Page";
-import PostUpdateForm from "./components/Post/PostUpdateForm"
-// import PostEditor from "./components/Post/PostEditor"
-import Upload from "./upload"
-
-import PostList from "./components/Post/PostList";
-
+//Member(User)
+import JoinForm from "./User/JoinForm";
+import LoginForm from "./User/LoginForm";
+import UserPageForm from "./User/UserPageForm";
+import LoginPage from "./LoginPage";
 import UserList from './User/NewUserList';
 
+//Board(Post)
+import Post from "./components/Post/Post";
+import PostList from "./components/Post/PostList";
+import QnAPostUpdate from "./components/Post/QnAPostUpdate"
+import PostQnAWirte from "./components/BbsQnAView";
 // import PostSearchList from './Post/SearchPosts';
+import BoardList from "./components/Post/BoardList"
 
-import NewPostWirte from "./components/BbsView";
+import Upload from "./upload"
+
+
+
+
 
 
 class Body extends Component {
@@ -34,9 +38,8 @@ class Body extends Component {
                         <Route path="/boardList" component={BoardList}/>
 
 
-                        <Route exact path="/posts/update" component={PostUpdateForm}/>
-                        {/* <Route exact path="/posts/write" component={PostEditor}/> */}
-                        <Route exact path="/posts/qna/write" component={NewPostWirte}/>
+                        <Route exact path="/posts/update" component={QnAPostUpdate}/>
+                        <Route exact path="/posts/qna/write" component={PostQnAWirte}/>
                         <Route path="/posts/:id" component={Post}/>
                         
                         <Route exact path="/qna" component={PostList}/>

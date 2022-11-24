@@ -47,11 +47,11 @@ class LoginForm extends Component {
       .post("/login", send_param)
       //정상 수행
       .then(response => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           
           const expiresTime = new Date(response.data.data.tokenExpired);
           $.cookie("accessToken", response.data.data.accessToken, { expires: expiresTime });
-          const a = new Date();
+          // const a = new Date();
           
           cogoToast.success("로그인에 성공했습니다.");
           setTimeout(function() {

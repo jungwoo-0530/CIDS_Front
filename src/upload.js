@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import CKEditor from "ckeditor4-react-advanced";
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import CKEditor from "@ckeditor/ckeditor5-react";
-import { Button, Form} from "react-bootstrap";
+// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+// import CKEditor from "@ckeditor/ckeditor5-react";
+// import { Button, Form} from "react-bootstrap";
 import axios from "axios";
 import $ from "jquery";
 import {} from "jquery.cookie";
@@ -38,7 +38,7 @@ class upload extends Component {
           })
         //정상 수행
         .then(response => {
-          if (response.status == 201) {
+          if (response.status === 201) {
             cogoToast.success(response.data.message);
             this.props.history.goBack();
           } else {

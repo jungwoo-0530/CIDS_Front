@@ -95,7 +95,7 @@ class UserPageForm extends Component {
             withCredentials: true
           })
       .then((response) =>{
-        if(response.status==200){
+        if(response.status===200){
           let user = response.data.data;
           this.setState({
             name: user.name,
@@ -184,7 +184,7 @@ class UserPageForm extends Component {
       }
         )
         .then((response) => {
-          if(response.status == 200){
+          if(response.status === 200){
             cogoToast.success(response.data.message,{
               onClick:()=>{
                 window.location.href = '/user/edit';

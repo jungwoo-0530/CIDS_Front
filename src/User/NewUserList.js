@@ -74,7 +74,7 @@ const NewUserList = ({ list, total }) => {
           }
         })
         .then(response =>{
-            if(response.status ==200){
+            if(response.status ===200){
                 cogoToast.success(response.data.message);
             }else{
                 cogoToast.error("role 수정 실패");
@@ -134,7 +134,7 @@ const NewUserList = ({ list, total }) => {
         setPage(0);
         
 
-        if(search == null || search == ''){
+        if(search === null || search === ''){
             axios
             .get(`/member/search`, {
                 params: {
