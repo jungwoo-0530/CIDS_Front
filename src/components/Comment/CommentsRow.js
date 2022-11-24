@@ -12,7 +12,7 @@ import { } from '../../css/userProfile.css';
 import { } from '../../css/pagination.css';
 import cogoToast from 'cogo-toast';
 import CommentReply from './CommentReply';
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };

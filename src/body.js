@@ -13,7 +13,7 @@ import {CssBaseline} from "@material-ui/core";
 import LoginPage from "./LoginPage";
 import InvalidPage from "./404Page";
 import PostUpdateForm from "./components/Post/PostUpdateForm"
-import PostEditor from "./components/Post/PostEditor"
+// import PostEditor from "./components/Post/PostEditor"
 import Upload from "./upload"
 
 import PostList from "./components/Post/PostList";
@@ -21,6 +21,8 @@ import PostList from "./components/Post/PostList";
 import UserList from './User/NewUserList';
 
 // import PostSearchList from './Post/SearchPosts';
+
+import NewPostWirte from "./components/BbsView";
 
 
 class Body extends Component {
@@ -33,7 +35,8 @@ class Body extends Component {
 
 
                         <Route exact path="/posts/update" component={PostUpdateForm}/>
-                        <Route exact path="/posts/write" component={PostEditor}/>
+                        {/* <Route exact path="/posts/write" component={PostEditor}/> */}
+                        <Route exact path="/posts/qna/write" component={NewPostWirte}/>
                         <Route path="/posts/:id" component={Post}/>
                         
                         <Route exact path="/qna" component={PostList}/>
@@ -41,6 +44,7 @@ class Body extends Component {
                         <Route path="/uploads" component={Upload}/>
                         
                         {/* <Route exact path="/posts/search" component={PostSearchList}/> */}
+
 
 
                         <Route path="/userlist" component={UserList}/>

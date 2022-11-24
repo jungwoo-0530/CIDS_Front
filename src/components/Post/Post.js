@@ -17,7 +17,7 @@ import CommentsRow from "../Comment/CommentsRow";
 import { Comment } from 'semantic-ui-react';
 ///////////////////////////////
 
-import "../../css/NavigaionGuardModalStyle.scss"
+// import "../../css/NavigaionGuardModalStyle.scss"
 
 axios.defaults.withCredentials = true;
 

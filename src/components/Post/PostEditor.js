@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from "react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import {Button, Form} from "react-bootstrap";
 import axios from "axios";
@@ -8,7 +8,7 @@ import {} from "jquery.cookie";
 import cogoToast from 'cogo-toast';
 import ImageUploadAdapter from "./ImageUploadAdapter";
 import {Prompt} from 'react-router-dom'
-import usePreventLeave from "../usePreventLeave";
+// import usePreventLeave from "../usePreventLeave";
 
 
 
@@ -82,8 +82,6 @@ function PostEditor(props){
             .catch(err =>{
                 console.log(err);
             })
-
-
     }
 
     const createPost = () => {

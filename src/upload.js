@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import CKEditor from "ckeditor4-react-advanced";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import ckeditor, { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import CKEditor from "@ckeditor/ckeditor5-react";
 import { Button, Form} from "react-bootstrap";
 import axios from "axios";
 import $ from "jquery";

@@ -1,16 +1,16 @@
 import React, { Component, useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Moment from 'moment';
-import ReactPaginate from 'react-paginate';
+// import Moment from 'moment';
+// import ReactPaginate from 'react-paginate';
 import $ from "jquery";
 import { } from "jquery.cookie";
 import cogoToast from "cogo-toast";
 import { } from '../../css/pagination.css';
-import qs from 'qs';
-import { toast } from "react-toastify";
-import { AlternateEmail } from "@material-ui/icons";
+// import qs from 'qs';
+// import { toast } from "react-toastify";
+// import { AlternateEmail } from "@material-ui/icons";
 
 import PostRow from "./PostRow";
 import PaginationPostAndComment from "../Pagination/PaginationPostAndComment";

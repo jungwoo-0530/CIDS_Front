@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Moment from 'moment';
-import ReactPaginate from 'react-paginate';
+// import Moment from 'moment';
+// import ReactPaginate from 'react-paginate';
 import $ from "jquery";
 import { } from "jquery.cookie";
 import cogoToast from "cogo-toast";
 import { } from '../../css/pagination.css';
-import qs from 'qs';
-import { toast } from "react-toastify";
-import { AlternateEmail } from "@material-ui/icons";
+// import { toast } from "react-toastify";
+// import { AlternateEmail } from "@material-ui/icons";
 
 import PostRow from "./PostRow";
 import PaginationPostAndComment from "../Pagination/PaginationPostAndComment";
+
 
 axios.defaults.withCredentials = true;
 
@@ -85,7 +85,7 @@ class PostList extends Component {
         let send_params;
         let send_body;
         let url;
-        if(this.state.search == true){
+        if(this.state.search === true){
             url = `/boards/search`;
             send_params = {
                 boardType: returnType,
@@ -159,7 +159,7 @@ class PostList extends Component {
                 //   console.log(this.state.postType);
                 if (response.status === 200) {
                     this.props.history.push({
-                        pathname: "/posts/write",
+                        pathname: "/posts/qna/write",
                         query: { postType: this.state.postType }
                     });
 

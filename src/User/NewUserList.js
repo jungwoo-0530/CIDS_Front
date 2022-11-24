@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Moment from 'moment';
 import axios from "axios";
 import $ from "jquery";
 import { Table, Button } from "react-bootstrap";
 import cogoToast from 'cogo-toast';
-import SearchMember from './SearchMember';
+// import SearchMember from './SearchMember';
 
 
 
