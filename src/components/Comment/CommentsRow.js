@@ -27,6 +27,7 @@ const CommentsRow = ({ commentRow, comments, boardId }) => {
     const [content, setContent] = useState("");
     const [replyVisible, setReplyVisible] = useState(false);
     const [editVisible, setEditVisible] = useState(false);
+    const [userImageUri, setUserImageUri] = useState("");
 
 
     //useEffect에서 commentRow들어간 곳이 deps임.
@@ -124,7 +125,7 @@ const CommentsRow = ({ commentRow, comments, boardId }) => {
                 <Comment.Avatar
                     onClick={handleUserProfileShow}
                     className="userProfile"
-                    // src={bucket + this.state.user.img_path} 
+                    src={commentRow.memberImgUri} 
                     style={imgStyle} />
 
                 <Comment.Content>

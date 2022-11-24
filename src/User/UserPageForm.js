@@ -55,23 +55,24 @@ class UserPageForm extends Component {
   fileUploadHandler = async () => {
     try{
       const data = new FormData();
-      await data.append('file',this.state.pictures[0]); //key value 저장 후 전송
+      await data.append('upload',this.state.pictures[0]); //key value 저장 후 전송
       // await data.append('filename',this.state.pictures[0].name);
       console.log(data);
 
-      axios.post(`/test/image/upload`, data, {
+      axios.post(`/members/image`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': 'Bearer ' + $.cookie('accessToken')
         }})
       .then( response => { //응답받은 url 저장
           this.setState({
-            imgPath: this.state.s3_url + response.data.img_path
+            // imgPath: this.state.s3_url + response.data.img_path
+            imgPath: response.data.data.imageUrl
           });
           this.setState({
             pictures: []
           });
-          
+          console.log(response.data.data.imageUrl);
       });
       return;
     } catch (err){
@@ -102,8 +103,10 @@ class UserPageForm extends Component {
             role: user.role,
             telephone: user.telephone,
             email: user.email,
-            loginId: user.loginId
+            loginId: user.loginId,
+            imgPath: user.imgUri
             // imgPath: this.state.s3_url + user.img_path
+
           });          
         }
         else{
@@ -270,7 +273,7 @@ class UserPageForm extends Component {
                   <Grid.Column>
                     <Form>
                       <Form.Group widths={2}>
-                        <Form.Input label="name" name="name"type="text" value={this.state.name} onChange={this.handleNameChange}/>
+                        <Form.Input label="name" name="name"type="text" value={this.state.name} readOnly={true}/>
                       </Form.Group>
                       <Form.Group widths={2}>
                         <Form.Input  label="email" name="email" type="text" value={this.state.email} onChange={this.handleEmailChange} />

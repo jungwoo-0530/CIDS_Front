@@ -32,6 +32,7 @@ class Post extends Component {
     userProfileModalShow: false,
     available: 1,
     editable: false,
+    userImageUri: "",
 
     comments: [],
     currentPage: 0,
@@ -121,6 +122,10 @@ class Post extends Component {
     this.props.history.goBack();
   }
 
+  // handleClick = (e) ={
+
+  // }
+
 
   //post render
   getShow = () => {
@@ -138,16 +143,21 @@ class Post extends Component {
         if (response.status === 200) {
           console.log("게시물을 불러왔습니다.");
           cogoToast.success(this.props.match.params.id+"번 게시물입니다.");
-          this.setState({ editable: response.data.data.editable })
-          console.log("editable",this.state.editable);
+          this.setState({ 
+            editable: response.data.data.editable,
+            userImageUri: response.data.data.memberImageUri
+           }, ()=>{
+            console.log("userImageUri : ",this.state.userImageUri)
+            console.log("editable",this.state.editable);
+           })
+          
           this.Category(response.data.data.type);
           const post = (
             <div>
-              <h1>{response.data.data.title}</h1>
+              <h1>제목 : {response.data.data.title}</h1>
               <div className="row">
                 <div onClick={this.handleUserProfileShow}  >
-                  {/* <Image className="userProfile" src={bucket + response.data.writer.img_path} width="25" height="25" style={{ border:"3px solid #fff", boxShadow: "0 0 16px rgb(221,221,221",marginLeft:"15px", cursor:"pointer"}} roundedCircle/> */}
-                  <Image className="userProfile" src={bucket + response.data.author} width="25" height="25" style={{ border: "3px solid #fff", boxShadow: "0 0 16px rgb(221,221,221", marginLeft: "15px", cursor: "pointer" }} roundedCircle />
+                  <Image className="userProfile" src={this.state.userImageUri} width="25" height="25" style={{ border: "3px solid #fff", boxShadow: "0 0 16px rgb(221,221,221", marginLeft: "15px", cursor: "pointer" }}  />
                 </div>
                 <h6 style={{ marginTop: "5px", marginLeft: "10px", fontWeight: "600" }}>{response.data.data.author}( {response.data.data.email} )</h6>
                 <h6 style={{ display: "inline-block", marginLeft: ".5em", color: "rgba(0,0,0,.4)", fontSize: ".875em", marginTop: "6px" }}>{this.DateFormat(response.data.data.updateTime)}</h6>
@@ -163,7 +173,11 @@ class Post extends Component {
               {/* this.editable === true? */}
               <ButtonGroup aria-label="Basic example">
                 <Button variant="secondary" onClick={this.goBack}>뒤로가기</Button>
-                <NavLink
+                {
+                  
+                  this.state.editable ?
+                  <>
+                  <NavLink
                   to={{
                     pathname: `/posts/update`,
                     data: {
@@ -177,7 +191,12 @@ class Post extends Component {
                     글 수정
                   </Button>
                 </NavLink>
-                <Button disabled={this.state.editable === true ? "" : "false"} variant="secondary" onClick={this.deletePost}>글 삭제</Button>
+                  <Button disabled={this.state.editable === true ? "" : "false"} variant="secondary" onClick={this.deletePost}>글 삭제</Button>
+                  </>
+                  :
+                  null
+                }
+                
               </ButtonGroup>
 
               <hr />
@@ -206,6 +225,10 @@ class Post extends Component {
 
       });
   };
+
+  updatePost = () => {
+
+  }
 
   //////////////////////////////////////////////////////////////////////
   

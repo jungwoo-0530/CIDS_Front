@@ -158,10 +158,18 @@ class PostList extends Component {
                 console.log(response.status);
                 //   console.log(this.state.postType);
                 if (response.status === 200) {
-                    this.props.history.push({
-                        pathname: "/posts/qna/write",
-                        query: { postType: this.state.postType }
-                    });
+                    if(this.state.postType === "qna"){
+                        this.props.history.push({
+                            pathname: "/posts/qna/write",
+                            query: { postType: this.state.postType }
+                        });
+                    }else if(this.state.postType === "notification"){
+                        this.props.history.push({
+                            pathname: "/posts/notification/write",
+                            query: { postType: this.state.postType }
+                        });
+                    }
+                    
 
                     console.log("글 쓸 수 있는 권한 있음");
 

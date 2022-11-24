@@ -112,13 +112,15 @@ function QnAPostUpdate() {
       if(res.status === 200){
         cogoToast.success(res.data.message)
         console.log("수정완료.");
-        window.location.href="/qna";
+        window.location.href="/posts/"+ location.data.id;
 
       }else{
         cogoToast.error(res.data.message)
+      
       }
     })
     .catch((err) =>{
+      cogoToast.error("수정 실패.");
       console.log(err);
 
     })

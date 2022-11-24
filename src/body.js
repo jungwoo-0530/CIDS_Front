@@ -17,17 +17,13 @@ import UserList from './User/NewUserList';
 //Board(Post)
 import Post from "./components/Post/Post";
 import PostList from "./components/Post/PostList";
-import QnAPostUpdate from "./components/Post/QnAPostUpdate"
+import PostUpdate from "./components/Post/PostUpdate"
 import PostQnAWirte from "./components/BbsQnAView";
+import PostNotificationWrite from "./components/BbsNotificationView";
 // import PostSearchList from './Post/SearchPosts';
 import BoardList from "./components/Post/BoardList"
 
 import Upload from "./upload"
-
-
-
-
-
 
 class Body extends Component {
     render() {
@@ -36,10 +32,12 @@ class Body extends Component {
                 <div>
                     <Switch>
                         <Route path="/boardList" component={BoardList}/>
+            
 
-
-                        <Route exact path="/posts/update" component={QnAPostUpdate}/>
+                        <Route exact path="/posts/update" component={PostUpdate}/>
                         <Route exact path="/posts/qna/write" component={PostQnAWirte}/>
+                        <Route exact path="/posts/notification/write" component={PostNotificationWrite}/>
+                        
                         <Route path="/posts/:id" component={Post}/>
                         
                         <Route exact path="/qna" component={PostList}/>
