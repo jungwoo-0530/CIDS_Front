@@ -7,13 +7,17 @@ import Header from './header';
 // import Footer from './footer';
 import Body from './body';
 import {} from './css/index.css';
+import ErrorBoundary from './ErrorBoundary';
+
 
 ReactDOM.render(
+  <ErrorBoundary>
   <BrowserRouter>
     <Header/>
     <Body/>
     {/* <Footer/> */}
-  </BrowserRouter>,
+  </BrowserRouter>
+  </ErrorBoundary>,
   // document.querySelector('#container')
   document.getElementById('container')
 ); 

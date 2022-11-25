@@ -61,10 +61,10 @@ class PwChangeModalForm extends Component {
     const send_param = {
       //headers,
       currentPw: this.currentPw.value,
-      newPw: this.newPw.value
+      newPassword: this.newPw.value
     };
     axios
-      .put(`/members/me/changePw`, send_param,
+      .put(`/members/me/password`, send_param,
       {
         headers:{
           'Authorization': 'Bearer ' + $.cookie('accessToken')

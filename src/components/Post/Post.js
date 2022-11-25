@@ -122,9 +122,6 @@ class Post extends Component {
     this.props.history.goBack();
   }
 
-  // handleClick = (e) ={
-
-  // }
 
 
   //post render
@@ -169,8 +166,6 @@ class Post extends Component {
                 }}>
                 </p>
               </div>
-              {/* {response.data.author === $.cookie('login_id') || $.cookie('login_id') === 'admin'?  // 글을 쓴 유저거나 admin일때만 btn 활성화 */}
-              {/* this.editable === true? */}
               <ButtonGroup aria-label="Basic example">
                 <Button variant="secondary" onClick={this.goBack}>뒤로가기</Button>
                 {

@@ -1325,6 +1325,13 @@
   dependencies:
     "regenerator-runtime" "^0.13.10"
 
+"@babel/runtime@^7.7.6":
+  "integrity" "sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg=="
+  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.20.1.tgz"
+  "version" "7.20.1"
+  dependencies:
+    "regenerator-runtime" "^0.13.10"
+
 "@babel/runtime@^7.8.4":
   "integrity" "sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.20.1.tgz"
@@ -10086,6 +10093,13 @@
     "tiny-warning" "^1.0.0"
     "value-equal" "^1.0.1"
 
+"history@^5.3.0":
+  "integrity" "sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ=="
+  "resolved" "https://registry.npmjs.org/history/-/history-5.3.0.tgz"
+  "version" "5.3.0"
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 "hmac-drbg@^1.0.0":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
   "resolved" "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
@@ -16632,15 +16646,10 @@
     "prop-types" "^15.6.2"
     "scheduler" "^0.19.1"
 
-"react-error-overlay@^6.0.11":
+"react-error-overlay@^6.0.11", "react-error-overlay@^6.0.3":
   "integrity" "sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg=="
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   "version" "6.0.11"
-
-"react-error-overlay@^6.0.3", "react-error-overlay@^6.0.9":
-  "integrity" "sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew=="
-  "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
-  "version" "6.0.9"
 
 "react-event-listener@^0.4.5":
   "integrity" "sha512-ZSWkIt+wfdeV1ulHmm1Neo8vPoAdfChELtYr2nXvwsQ8rkq6eG551iVC3xhG+ZPPuehdrzOMOwhduOY89d6dyQ=="

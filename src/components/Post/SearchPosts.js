@@ -1,16 +1,12 @@
 import React, { Component, useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { Table, Button } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
 import axios from "axios";
-// import Moment from 'moment';
-// import ReactPaginate from 'react-paginate';
-import $ from "jquery";
+import $, { get } from "jquery";
 import { } from "jquery.cookie";
 import cogoToast from "cogo-toast";
 import { } from '../../css/pagination.css';
-// import qs from 'qs';
-// import { toast } from "react-toastify";
-// import { AlternateEmail } from "@material-ui/icons";
 
 import PostRow from "./PostRow";
 import PaginationPostAndComment from "../Pagination/PaginationPostAndComment";
@@ -23,97 +19,96 @@ axios.defaults.withCredentials = true;
 
 ///////////////////////////////////////////
 
+const SearchPosts = () => {
+    const location = useLocation();
 
-const SearchPosts = ({ ppostType, psearchOption, pkeyword, boardName }) => {
-
-    const [keyword, setKeyword] = useState(pkeyword);
-    const [searchOption, setSearchOption] = useState(psearchOption);
+    const [keyword, setKeyword] = useState(location.data.keyword);
+    const [searchOption, setSearchOption] = useState(location.data.searchOption);
+    const [boardName, setBoardName] = useState(location.data.boardName)
+    const [postType, setPostType] = useState(location.data.postType);
 
     const [posts, setPosts] = useState([]);
-    const [currentPage, setCurrentPage] = useState("");
+    const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+
+
+
+    useEffect(() => {
+        console.log("searchPosts 시작!")
+        console.log("keyword ",keyword)
+        console.log("searchOption ", searchOption)
+        console.log("boardName", boardName)
+        console.log("postType ", postType)
+
+        getPosts(currentPage);
+        return () => {
+            console.log("searchPosts 탈출.")
+        }
+
+    },[currentPage])
+
 
 
     const getPosts = (pageNumber) => {
 
-
-        url = `/boards/search`;
-        send_params = {
-            boardType: ppostType,
-            page: pageNumber,
-
+        console.log("getPosts 몇번 페이지 시작? ", pageNumber)
+        const url = `/boards/search`;
+        const send_params = {
+            page: pageNumber
         };
-        send_body = {
-            option: psearchOption,
-            keyword: keyword
+        console.log(send_params.page);
+        const send_body = {
+            option: searchOption,
+            keyword: keyword,
+            boardType: postType
         };
+        console.log(send_body.option);
+        console.log(send_body.keyword);
+        console.log(send_body.boardType);
+        
 
 
 
         /* 권한 체크ajax */
-        axios
-            .get(
-                axios // 실제 post List 가져오기
-                    .get(url, {
-                        params: send_params,
-                        send_body
-                    })
-                    .then(returnData => {
-                        const totalPages = returnData.data.totalPages;
+        
+        axios // 실제 post List 가져오기
+            .get(url
+            ,{
+                headers: {
+                    'Authorization': 'Bearer ' + $.cookie('accessToken')
+                },
+                params: {
+                    page: pageNumber,
+                    option: searchOption,
+                    keyword: keyword,
+                    boardType: postType
+                }
+        })
+            .then(returnData => {
+                const totalPages = returnData.data.totalPages;
 
-                        setTotalPages(totalPages)
-                        if (returnData.data.numberOfElements > 0) {
-                            const returnedPosts = returnData.data.content;
-                            setPosts(returnedPosts);
+                setTotalPages(totalPages)
+                if (returnData.data.numberOfElements > 0) {
+                    const returnedPosts = returnData.data.content;
+                    setPosts(returnedPosts);
 
 
-                        } else {
-                            //게시글 못 찾은 경우
-                            posts.push([
-                                <tr>
-                                    <td colSpan="5" style={{ textAlign: "center" }}>게시글이 존재하지 않습니다.</td>
-                                </tr>
-                            ])
+                } else {
+                    //게시글 못 찾은 경우
+                    posts.push([
+                        <tr>
+                            <td colSpan="5" style={{ textAlign: "center" }}>게시글이 존재하지 않습니다.</td>
+                        </tr>
+                    ])
 
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            );
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
 
     };
-
-    const whitePost = () => {
-        axios
-            .get(`/boards/authUser/${ppostType}`,
-                {
-                    headers: {
-                        'Authorization': 'Bearer ' + $.cookie('accessToken'),
-                        'Content-Type': 'application/json'
-                    }
-                })
-            .then(response => {
-                console.log(response.status);
-                //   console.log(this.state.postType);
-                if (response.status === 200) {
-                    this.props.history.push({
-                        pathname: "/posts/write",
-                        query: { postType: ppostType }
-                    });
-
-                    console.log("글 쓸 수 있는 권한 있음");
-
-
-                }
-            }).catch(err => {
-                console.log(err);
-                cogoToast.error("글 쓰기 권한이 없습니다.");
-            });
-
-    }
-
     ///////////////////////////////////////////////
     const paginate = (pageNumber) => {
 
@@ -157,7 +152,7 @@ const SearchPosts = ({ ppostType, psearchOption, pkeyword, boardName }) => {
         return (
             <div className="container" style={divStyle}>
                 <div style={{ marginBottom: "1%" }}>
-                    <h2>{boardName}</h2>
+                    <h2>{boardName} : {keyword}에 대한 검색결과 </h2>
                 </div>
 
                 <div>
@@ -180,13 +175,11 @@ const SearchPosts = ({ ppostType, psearchOption, pkeyword, boardName }) => {
                             ))}
                         </tbody>
                     </Table>
-                    <Button variant="secondary" onClick={whitePost}>게시글 작성</Button>
                 </div>
                 <div>
                     <PaginationPostAndComment totalPage={totalPages} paginate={paginate} />
                 </div>
                 <div>
-                    <form>
                         <select value={searchOption} onChange={handleSearchOption}>
                             <option value="title">
                                 제목
@@ -200,10 +193,20 @@ const SearchPosts = ({ ppostType, psearchOption, pkeyword, boardName }) => {
                         </select>
 
                         <input type="text" placeholder="" onChange={handleSearch} />
-                        <div>
-                            <Button type="submit" onClick={onSubmit}>검색</Button>
-                        </div>
-                    </form>
+                        
+                        <NavLink 
+                        to={{
+                            pathname:`/post/search`,
+                            data: {
+                                postType: postType,
+                                searchOption: searchOption,
+                                keyword: keyword,
+                                boardName: boardName
+                            }
+                        }}
+                        >
+                        <Button type="submit" >검색</Button>
+                        </NavLink>
 
 
                 </div>

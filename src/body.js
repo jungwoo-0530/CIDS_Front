@@ -20,7 +20,7 @@ import PostList from "./components/Post/PostList";
 import PostUpdate from "./components/Post/PostUpdate"
 import PostQnAWirte from "./components/BbsQnAView";
 import PostNotificationWrite from "./components/BbsNotificationView";
-// import PostSearchList from './Post/SearchPosts';
+import PostSearchList from './components/Post/SearchPosts';
 import BoardList from "./components/Post/BoardList"
 
 import Upload from "./upload"
@@ -38,13 +38,13 @@ class Body extends Component {
                         <Route exact path="/posts/qna/write" component={PostQnAWirte}/>
                         <Route exact path="/posts/notification/write" component={PostNotificationWrite}/>
                         
-                        <Route path="/posts/:id" component={Post}/>
+                        <Route exact path="/posts/:id" component={Post}/>
                         
                         <Route exact path="/qna" component={PostList}/>
                         <Route exact path="/notice" component={PostList}/>
                         <Route path="/uploads" component={Upload}/>
                         
-                        {/* <Route exact path="/posts/search" component={PostSearchList}/> */}
+                        <Route exact path="/post/search" component={PostSearchList}/>
 
 
 
@@ -64,6 +64,9 @@ class Body extends Component {
                         <Route exact path="/" component={HomepageForm}/>
 
                         <Route path="/*" component={InvalidPage}/>
+                        <Route path="/error" component={InvalidPage}/>
+
+
                     </Switch>
                 </div>
             </CssBaseline>

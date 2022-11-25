@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 // import Moment from 'moment';
 // import ReactPaginate from 'react-paginate';
@@ -10,6 +10,8 @@ import cogoToast from "cogo-toast";
 import { } from '../../css/pagination.css';
 // import { toast } from "react-toastify";
 // import { AlternateEmail } from "@material-ui/icons";
+import { useHistory} from "react-router-dom";
+
 
 import PostRow from "./PostRow";
 import PaginationPostAndComment from "../Pagination/PaginationPostAndComment";
@@ -35,7 +37,7 @@ class PostList extends Component {
 
         search: false,
 
-        searchOption: "",
+        searchOption: "title",
         keyword: ""
 
     }
@@ -108,8 +110,7 @@ class PostList extends Component {
         console.log(send_params.boardType)
 
         /* 권한 체크ajax */
-        axios
-            .get(
+        
                 axios // 실제 post List 가져오기
                     .get(url, {
                         params: send_params,
@@ -140,14 +141,13 @@ class PostList extends Component {
                     .catch(err => {
                         console.log(err);
                     })
-            );
 
 
     };
 
     whitePost = () => {
         axios
-            .get(`/boards/authUser/${this.state.postType}`,
+            .get(`/boards/auth/${this.state.postType}`,
                 {
                     headers: {
                         'Authorization': 'Bearer ' + $.cookie('accessToken'),
@@ -208,12 +208,12 @@ class PostList extends Component {
     }
 
 
-    onSubmit = () =>{
-        this.setState({
-            search: true
-        })
-        this.getPosts(0);
-    }
+    // onSubmit = () =>{
+    //     this.setState({
+    //         search: true
+    //     })
+    //     this.getPosts(0);
+    // }
 
     handleSearchOption = (e) =>{
         this.setState({
@@ -229,6 +229,7 @@ class PostList extends Component {
             minWidth: "70%",
             minHeight: "700px",
         };
+
 
 
         return (
@@ -263,7 +264,7 @@ class PostList extends Component {
                     <PaginationPostAndComment totalPage={this.state.totalPages} paginate={this.paginate} />
                 </div>
                 <div>
-                <form>
+                {/* <form>
                     <select value={this.state.searchOption} onChange={this.handleSearchOption}>
                         <option value="title">
                             제목
@@ -280,7 +281,42 @@ class PostList extends Component {
                     <div>
                         <Button type="submit" onClick={this.onSubmit}>검색</Button>
                     </div>
-                    </form>
+                    </form> */}
+                
+                    
+                   
+                    <div>
+                    <select value={this.state.searchOption} onChange={this.handleSearchOption}>
+                        <option value="title">
+                            제목
+                        </option>
+                        <option value="titleAndContent">
+                            제목 + 내용
+                        </option>
+                        <option value="author">
+                            글쓴이
+                        </option>
+                    </select>
+                    <input style={{height: 20}}type="text" placeholder="" onChange={this.handleSearch}/>
+                    
+                        <NavLink 
+                        to={{
+                            pathname: `/post/search`,
+                            data: {
+                                postType: this.state.postType,
+                                searchOption: this.state.searchOption,
+                                keyword: this.state.keyword,
+                                boardName: this.state.boardName
+                            },
+                            
+                        }}
+                        >
+                        {/* <Button>검색</Button> */}
+                        <Button>
+                            검색
+                        </Button>
+                        </NavLink>
+                    </div>
 
                     
                 </div>
