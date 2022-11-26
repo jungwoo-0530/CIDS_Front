@@ -2,15 +2,10 @@ import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-// import Moment from 'moment';
-// import ReactPaginate from 'react-paginate';
 import $ from "jquery";
 import { } from "jquery.cookie";
 import cogoToast from "cogo-toast";
 import { } from '../../css/pagination.css';
-// import { toast } from "react-toastify";
-// import { AlternateEmail } from "@material-ui/icons";
-import { useHistory} from "react-router-dom";
 
 
 import PostRow from "./PostRow";
@@ -18,12 +13,6 @@ import PaginationPostAndComment from "../Pagination/PaginationPostAndComment";
 
 
 axios.defaults.withCredentials = true;
-
-//post 하나당 출력
-
-//////////////////////////////////////////////
-
-///////////////////////////////////////////
 
 
 class PostList extends Component {
@@ -264,26 +253,8 @@ class PostList extends Component {
                     <PaginationPostAndComment totalPage={this.state.totalPages} paginate={this.paginate} />
                 </div>
                 <div>
-                {/* <form>
-                    <select value={this.state.searchOption} onChange={this.handleSearchOption}>
-                        <option value="title">
-                            제목
-                        </option>
-                        <option value="titleAndContent">
-                            제목 + 내용
-                        </option>
-                        <option value="author">
-                            글쓴이
-                        </option>
-                    </select>
-                    
-                    <input type="text" placeholder="" onChange={this.handleSearch}/>
-                    <div>
-                        <Button type="submit" onClick={this.onSubmit}>검색</Button>
-                    </div>
-                    </form> */}
-                
-                    
+        
+            
                    
                     <div>
                     <select value={this.state.searchOption} onChange={this.handleSearchOption}>

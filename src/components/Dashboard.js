@@ -1,15 +1,10 @@
 import React, {Component, useEffect, useState} from "react";
-import ChartistGraph from "react-chartist";
-// @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 import Search from '@material-ui/icons/Search';
 import Person from '@material-ui/icons/Person';
 import Location from '@material-ui/icons/LocationSearching';
 import Update from "@material-ui/icons/Update";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
-// core components
 import { TableSimple } from 'react-pagination-table';
 import GridItem from "./Grid/GridItem.js";
 import GridContainer from "./Grid/GridContainer.js";
@@ -18,12 +13,9 @@ import CardHeader from "./Card/CardHeader.js";
 import CardIcon from "./Card/CardIcon.js";
 import CardBody from "./Card/CardBody.js";
 import CardFooter from "./Card/CardFooter.js";
-import Chartist from "chartist";
-import cogoToast from "cogo-toast";
 import axios from "axios";
 
 import styles from "../assets/jss/material-dashboard-react/views/dashboardStyle.js";
-import Axios from "axios";
 
 const useStyles = makeStyles(styles);
 
@@ -116,7 +108,7 @@ export default function Dashboard(d) {
                             <CardIcon color="success">
                                 <Person />
                             </CardIcon>
-                            <p className={classes.cardCategory}>사용자 수</p>
+                            <p className={classes.cardCategory}>CIDS서비스 이용 수</p>
                             <h3 className={classes.cardTitle}>{totalUserCount}<small>명</small></h3>
 
                         </CardHeader>
@@ -160,9 +152,6 @@ export default function Dashboard(d) {
                     <Card>
                         <CardHeader color="warning">
                             <h4 className={classes.cardTitleWhite}>검색 키워드 Top 5</h4>
-                            <a href="/ranking" className={classes.cardCategoryWhite}>
-                                더보기
-                            </a>
                         </CardHeader>
                         <CardBody>
                             <div className={classes.stats}>
@@ -180,10 +169,7 @@ export default function Dashboard(d) {
                 <GridItem xs={12} sm={12} md={5}>
                     <Card>
                         <CardHeader color="warning">
-                            <h4 className={classes.cardTitleWhite}>의심 도메인 Top 5</h4>
-                            <a href="/ranking" className={classes.cardCategoryWhite}>
-                                더보기
-                            </a>
+                            <h4 className={classes.cardTitleWhite}>검출된 도메인 Top 5</h4>
                         </CardHeader>
                         <CardBody>
                             <div className={classes.stats}>

@@ -15,7 +15,6 @@ function QnAPostUpdate() {
     const location = useLocation();
 
   const [content, setContent] = useState(location.data.content);
-//   const [title, setTitle] = useState(loc)
   const [fileQueue, setFileQueue] = useState([]);
 
  

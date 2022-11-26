@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Image, Table, Row, Col } from "react-bootstrap";
-// import { Input } from 'semantic-ui-react';
 import axios from "axios";
-// import Moment from 'moment';
-// import ReactPaginate from 'react-paginate';
 import { } from '../css/pagination.css';
 
 
@@ -52,23 +49,21 @@ class RankingIndex extends Component {
       .then(res => {
 
         const totalPages =
-          res.data.data.totalPages;
+          res.data.totalPages;
 
-        const pageSize = res.data.data.pageSize;
-
-        // const currentPage = res.data.currentpage;
+        const pageSize = res.data.size;
 
 
         this.setState({
           totalPages: totalPages,
           pageSize: pageSize,
-          currentPage: res.data.data.currentPage
+          currentPage: res.data.number
         })
 
         console.log(this.state.currentPage)
 
-        if (res.data.data.numberOfElements > 0) {
-          const returnedDomains = res.data.data.content;
+        if (res.data.numberOfElements > 0) {
+          const returnedDomains = res.data.content;
 
           this.setState({
             domains: returnedDomains

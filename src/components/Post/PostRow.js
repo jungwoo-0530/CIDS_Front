@@ -1,17 +1,13 @@
 import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 import Moment from 'moment';
-//https://react.semantic-ui.com/views/comment/#types-comment
 import { Comment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 // import UserProfileModal from "../../User/UserProfileModal";
 import { } from "../../css/NewCommentForm.css";
-import $ from 'jquery';
 import { } from 'jquery.cookie';
 import { } from '../../css/userProfile.css';
 import { } from '../../css/pagination.css';
-// import cogoToast from 'cogo-toast';
-// import { render } from "@testing-library/react";
 import { NavLink } from "react-router-dom";
 
 

@@ -212,11 +212,14 @@ class Post extends Component {
       })
       //에러
       .catch(err => {
+        cogoToast.error("로그인 후 이용해주세요.")
+        
         console.log("error 발생");
         console.log(err);
         this.setState({
           available: 0
         })
+        this.goBack();
 
       });
   };
