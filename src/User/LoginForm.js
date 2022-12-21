@@ -57,16 +57,12 @@ class LoginForm extends Component {
           setTimeout(function() {
             window.location.href="/";
           }, 1000);
-        } 
-        else {
-          cogoToast.error(response.data.reason);
-          this.loginId.value = "";
-          this.loginPw.value = "";
         }
       })
       //에러
       .catch(err => {
-        console.log(err);
+        cogoToast.error(err.response.data.message);
+        console.log(err.response.data.message);
       });
   };
 

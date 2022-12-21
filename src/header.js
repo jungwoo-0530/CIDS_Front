@@ -49,8 +49,24 @@ class Header extends Component{
     //     }
     //   });
 
+    axios
+      .post("/logout", null)
+      //정상 수행
+      .then(response => {
+        if (response.status === 200) {
+          cogoToast.success("로그아웃에 성공했습니다.");
+        } 
+        else {
+          cogoToast.error(response.data.reason);
+        }
+      })
+      //에러
+      .catch(err => {
+        console.log(err);
+      });
+  
     $.removeCookie("accessToken");
-    cogoToast.success("로그아웃에 성공했습니다.");
+    
     window.location.href="/";
   };
 
