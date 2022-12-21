@@ -23,7 +23,7 @@
   - [기능 명세서](#기능-명세서)
   - [API 명세서](#API-명세서)
   - [DB 명세서](#DB-명세서)
-- [BackEnd(Spring) & 머신 러닝(Flask)](#BackEnd머신-러닝Flask) 
+- [BackEnd(Spring) & 머신 러닝(Flask)](#BackEndSpring머신-러닝Flask) 
 
 
 
@@ -161,7 +161,7 @@
 
 <img src="img/Screenshot of IntelliJ IDEA (2022-11-27 1-51-10 AM).png" alt="Screenshot of IntelliJ IDEA (2022-11-27 1-51-10 AM)" style="zoom:50%;" />
 
-## BackEnd&머신 러닝(Flask)
+## BackEnd(Spring)&머신 러닝(Flask)
 
 - [BackEnd(SpringBoot)](https://github.com/jungwoo-0530/CIDS_Spring)
 - [머신 러닝(Flask)](https://github.com/jungwoo-0530/CIDS_ML)
