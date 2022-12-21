@@ -21,7 +21,7 @@
 - [기술 스택](#기술-스택)
 - [기획 & 설계](#기획-설계)
   - [기능 명세서](#기능-명세서)
-  - [API 명세서 Spring Boot](#API-명세서-Spring-Boot)
+  - [API 명세서](#API-명세서)
   - [DB 명세서](#DB-명세서)
 - [BackEnd(Spring) & 머신 러닝(Flask)](#BackEnd머신-러닝Flask) 
 
